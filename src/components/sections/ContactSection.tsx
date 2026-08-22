@@ -74,8 +74,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
     setSubmitError(null);
 
     try {
-      // Access key can be defined in .env or defaults to Web3Forms free endpoint
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'e356e9c6-8f38-4e89-9831-2900fa011a68';
+      // Access key is loaded securely from environment variable
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '';
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
