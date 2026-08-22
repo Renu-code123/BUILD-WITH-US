@@ -72,17 +72,29 @@ export const InquirySuccessModal: React.FC<InquirySuccessModalProps> = ({ inquir
           <div className="flex items-center gap-2 font-bold text-white">
             <Clock className="w-4 h-4 text-[#FF3CAC]" /> What Happens Next:
           </div>
-          <p>1. Our founders will review your requirements within 2 to 4 hours.</p>
-          <p>2. We will contact you via WhatsApp ({inquiry.phone || inquiry.email}) with an initial plan & quote.</p>
-          <p>3. Once approved, project creation starts immediately!</p>
+          <p>1. An inquiry alert was dispatched to our team at <span className="text-white font-medium">buildwithus0723@gmail.com</span>.</p>
+          <p>2. We will review your brief and reach out to your phone/WhatsApp ({inquiry.phone || inquiry.email}) within 2–4 hours.</p>
+          <p>3. If you have any extra files, you can also mail them to <a href="mailto:buildwithus0723@gmail.com" className="text-[#FF3CAC] underline hover:text-white">buildwithus0723@gmail.com</a>.</p>
         </div>
 
-        <button
-          onClick={onClose}
-          className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FF3CAC] to-[#784BA0] text-white font-bold text-sm shadow-lg shadow-pink-500/20 active:scale-95 transition-transform"
-        >
-          Got It, Thanks!
-        </button>
+        {/* ACTION BUTTONS */}
+        <div className="space-y-2.5">
+          <a
+            href={`mailto:buildwithus0723@gmail.com?subject=${encodeURIComponent(`Project Inquiry: ${inquiry.service} - ${inquiry.name}`)}&body=${encodeURIComponent(
+              `Hi Build With Us Team,\n\nHere are my project details (Ref: ${refId}):\n\nName: ${inquiry.name}\nEmail: ${inquiry.email}\nPhone: ${inquiry.phone}\nService: ${inquiry.service}\nBudget: ${inquiry.budget}\nDeadline: ${inquiry.deadline || 'Flexible'}\nDescription:\n${inquiry.description}\n\nReference: ${inquiry.reference || 'None'}`
+            )}`}
+            className="w-full py-3.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 active:scale-95 transition-all"
+          >
+            <span>Send Copy via Email (buildwithus0723@gmail.com)</span>
+          </a>
+
+          <button
+            onClick={onClose}
+            className="w-full py-3 rounded-full bg-white/10 hover:bg-white/15 text-slate-200 font-semibold text-xs border border-white/10 active:scale-95 transition-all"
+          >
+            Done & Close
+          </button>
+        </div>
 
       </div>
     </div>

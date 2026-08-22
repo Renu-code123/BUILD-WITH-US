@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
                 <MessageCircle className="w-4 h-4" />
               </a>
               <a
-                href="mailto:contact@buildwithus.com"
+                href="mailto:buildwithus0723@gmail.com"
                 className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-500 text-slate-300 hover:text-white transition-colors"
                 aria-label="Email"
               >
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-xs font-medium">
               <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Instagram</a></li>
               <li><a href="https://wa.me" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">WhatsApp</a></li>
-              <li><a href="mailto:hello@buildwithus.com" className="hover:text-white transition-colors">hello@buildwithus.com</a></li>
+              <li><a href="mailto:buildwithus0723@gmail.com" className="hover:text-white transition-colors">buildwithus0723@gmail.com</a></li>
             </ul>
           </div>
 
