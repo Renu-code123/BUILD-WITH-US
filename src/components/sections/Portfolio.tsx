@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Sparkles, ExternalLink, X, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, Sparkles, X, CheckCircle2 } from 'lucide-react';
 import { portfolioData } from '../../data/portfolioData';
 import { ProjectItem } from '../../types';
 
 interface PortfolioProps {
-  onOpenInquiry: (serviceId?: string) => void;
+  onOpenInquiry: (serviceDisplayName?: string, serviceType?: string) => void;
 }
 
 export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
-  const filters = ['All', 'Websites', 'Portfolios', 'Resumes', 'Posters'];
+  const filters = ['All', 'Websites', 'Portfolios', 'Resumes', 'Graphic Design'];
 
   const filteredProjects = activeFilter === 'All'
     ? portfolioData
@@ -21,14 +21,14 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
     <section id="work" className="relative py-24 bg-[#0A0A12] border-t border-white/10 overflow-hidden">
       
       {/* GLOW DECORATIONS */}
-      <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#784BA0]/15 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#00D2FF]/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-[#FF3CAC] mb-4">
-            <Sparkles className="w-3.5 h-3.5" /> FEATURED SHOWCASE
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-[#00D2FF] mb-4 shadow-lg shadow-cyan-500/5">
+            <Sparkles className="w-3.5 h-3.5 text-[#00D2FF]" /> FEATURED SHOWCASE
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
@@ -37,7 +37,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 font-normal">
-            Explore some of the things we can create for you.
+            Explore sample work across websites, portfolios, resumes, and graphic designs.
           </p>
         </div>
 
@@ -49,7 +49,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
               onClick={() => setActiveFilter(category)}
               className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${
                 activeFilter === category
-                  ? 'bg-gradient-to-r from-[#FF3CAC] to-[#784BA0] text-white shadow-lg shadow-pink-500/20 scale-105'
+                  ? 'bg-gradient-to-r from-[#00D2FF] to-[#784BA0] text-white shadow-lg shadow-cyan-500/20 scale-105'
                   : 'bg-[#10101C] text-slate-400 hover:text-white border border-white/10 hover:border-white/20'
               }`}
             >
@@ -64,9 +64,9 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
             <div
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              className="group glass-card rounded-3xl overflow-hidden border border-white/10 hover:border-[#FF3CAC]/40 transition-all duration-500 cursor-pointer hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/10 flex flex-col"
+              className="group glass-card rounded-3xl overflow-hidden border border-white/10 hover:border-[#00D2FF]/40 transition-all duration-500 cursor-pointer hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10 flex flex-col"
             >
-              {/* IMAGE PREVIEW WITH HOVER ZOOM 1.03x */}
+              {/* IMAGE PREVIEW */}
               <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
                 <img
                   src={project.image}
@@ -82,7 +82,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
                 </div>
 
                 {/* TOP RIGHT ARROW ICON */}
-                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white group-hover:bg-[#FF3CAC] group-hover:scale-110 transition-all">
+                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white group-hover:bg-[#00D2FF] group-hover:text-black group-hover:scale-110 transition-all">
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
@@ -90,10 +90,10 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
               {/* CARD DETAILS */}
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#FF3CAC] transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00D2FF] transition-colors">
                     {project.title}
                   </h3>
-                  <div className="text-xs font-medium text-[#FF3CAC] mb-3">
+                  <div className="text-xs font-medium text-[#00D2FF] mb-3">
                     {project.subtitle}
                   </div>
                   <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed mb-4">
@@ -116,9 +116,12 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
 
       </div>
 
-      {/* PROJECT DETAIL EXPANDED MODAL */}
+      {/* PROJECT DETAIL MODAL */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
+          onClick={() => setSelectedProject(null)}
+        >
           <div 
             className="relative w-full max-w-3xl bg-[#0A0A12] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden my-auto max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
@@ -126,6 +129,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
             <button
               onClick={() => setSelectedProject(null)}
               className="absolute top-5 right-5 p-2 rounded-full bg-white/10 text-slate-300 hover:text-white transition-colors"
+              aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
@@ -139,14 +143,14 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
             </div>
 
             <div className="flex items-center gap-2 mb-2">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#FF3CAC]/20 text-[#FF3CAC]">
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#00D2FF]/20 text-[#00D2FF]">
                 {selectedProject.category}
               </span>
               <span className="text-xs text-slate-400">Build With Us Portfolio Item</span>
             </div>
 
             <h3 className="text-2xl font-bold text-white mb-1">{selectedProject.title}</h3>
-            <p className="text-sm font-semibold text-[#FF3CAC] mb-4">{selectedProject.subtitle}</p>
+            <p className="text-sm font-semibold text-[#00D2FF] mb-4">{selectedProject.subtitle}</p>
             <p className="text-sm text-slate-300 leading-relaxed mb-6">{selectedProject.description}</p>
 
             <div className="mb-6">
@@ -163,14 +167,19 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10">
               <div className="text-xs text-slate-400">
-                Want a similar project built for you?
+                Want a similar build for your brand?
               </div>
               <button
                 onClick={() => {
+                  const serviceName = selectedProject.category === 'Websites' 
+                    ? 'Website Development' 
+                    : selectedProject.category === 'Portfolios' || selectedProject.category === 'Resumes'
+                    ? 'Portfolio & Resume Services'
+                    : 'Graphic Design';
                   setSelectedProject(null);
-                  onOpenInquiry();
+                  onOpenInquiry(serviceName);
                 }}
-                className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-[#FF3CAC] via-[#784BA0] to-[#2B86C5] text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-[#00D2FF] via-[#784BA0] to-[#FF3CAC] text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2"
               >
                 <span>Build Something Similar →</span>
               </button>

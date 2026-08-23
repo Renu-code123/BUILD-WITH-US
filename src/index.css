@@ -4,6 +4,7 @@
   :root {
     --bg-primary: #05050A;
     --bg-secondary: #0A0A12;
+    --accent-cyan: #00D2FF;
     --accent-pink: #FF3CAC;
     --accent-purple: #784BA0;
     --accent-blue: #2B86C5;
@@ -23,7 +24,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+  background: linear-gradient(135deg, #00D2FF 0%, #784BA0 50%, #FF3CAC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -44,7 +45,7 @@ body {
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 60, 172, 0.4), rgba(120, 75, 160, 0.2), rgba(43, 134, 197, 0.4));
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.4), rgba(120, 75, 160, 0.2), rgba(255, 60, 172, 0.4));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -52,7 +53,7 @@ body {
 }
 
 .glass-card {
-  background: rgba(10, 10, 18, 0.7);
+  background: rgba(10, 10, 18, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -63,20 +64,20 @@ body {
 }
 
 .glass-card-hover:hover {
-  background: rgba(16, 16, 28, 0.85);
-  border-color: rgba(255, 60, 172, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(255, 60, 172, 0.15), 0 0 20px -5px rgba(120, 75, 160, 0.1);
+  background: rgba(16, 16, 28, 0.9);
+  border-color: rgba(0, 210, 255, 0.35);
+  box-shadow: 0 12px 36px -10px rgba(0, 210, 255, 0.15), 0 0 24px -5px rgba(120, 75, 160, 0.1);
   transform: translateY(-4px);
 }
 
 .bg-radial-gradient {
-  background-image: radial-gradient(circle at 50% 0%, rgba(120, 75, 160, 0.15) 0%, rgba(255, 60, 172, 0.08) 25%, rgba(5, 5, 10, 0) 70%);
+  background-image: radial-gradient(circle at 50% 0%, rgba(120, 75, 160, 0.15) 0%, rgba(0, 210, 255, 0.08) 25%, rgba(5, 5, 10, 0) 70%);
 }
 
 .bg-radial-hero {
   background-image: 
-    radial-gradient(circle at 20% 20%, rgba(255, 60, 172, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 80% 60%, rgba(43, 134, 197, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 20% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(255, 60, 172, 0.12) 0%, transparent 40%),
     radial-gradient(circle at 50% 50%, rgba(120, 75, 160, 0.15) 0%, transparent 60%);
 }
 
@@ -92,10 +93,10 @@ body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF3CAC;
+  background: #00D2FF;
 }
 
-/* Keyframes for Razorpay inspired glowing pulses & float */
+/* Keyframes for Glowing Pulses & Float */
 @keyframes floatSlow {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(1deg); }
@@ -111,9 +112,9 @@ body {
   50% { opacity: 0.7; filter: blur(55px); }
 }
 
-@keyframes rayFlow {
-  0% { stroke-dashoffset: 1000; }
-  100% { stroke-dashoffset: 0; }
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .animate-float-slow {
@@ -126,4 +127,8 @@ body {
 
 .animate-pulse-glow {
   animation: pulseGlow 5s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
 }

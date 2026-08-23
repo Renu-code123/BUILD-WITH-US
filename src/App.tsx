@@ -7,7 +7,6 @@ import { Portfolio } from './components/sections/Portfolio';
 import { DeviceShowcase } from './components/sections/DeviceShowcase';
 import { Process } from './components/sections/Process';
 import { WhyUs } from './components/sections/WhyUs';
-import { Pricing } from './components/sections/Pricing';
 import { About } from './components/sections/About';
 import { Testimonials } from './components/sections/Testimonials';
 import { FAQ } from './components/sections/FAQ';
@@ -15,11 +14,13 @@ import { ContactSection } from './components/sections/ContactSection';
 import { Footer } from './components/layout/Footer';
 
 export function App() {
-  const [selectedServiceForInquiry, setSelectedServiceForInquiry] = useState<string | undefined>();
+  const [selectedService, setSelectedService] = useState<string | undefined>();
+  const [selectedServiceType, setSelectedServiceType] = useState<string | undefined>();
 
-  const handleOpenInquiry = (serviceId?: string) => {
-    if (serviceId) {
-      setSelectedServiceForInquiry(serviceId);
+  const handleOpenInquiry = (serviceDisplayName?: string, serviceType?: string) => {
+    if (serviceDisplayName) {
+      setSelectedService(serviceDisplayName);
+      setSelectedServiceType(serviceType || '');
     }
     const contactElem = document.getElementById('contact');
     if (contactElem) {
@@ -28,7 +29,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#05050A] text-slate-100 selection:bg-[#FF3CAC] selection:text-white font-sans antialiased overflow-x-hidden">
+    <div className="min-h-screen bg-[#05050A] text-slate-100 selection:bg-[#00D2FF] selection:text-black font-sans antialiased overflow-x-hidden">
       
       {/* GLOBAL STICKY NAVIGATION */}
       <Navbar onOpenInquiry={handleOpenInquiry} />
@@ -40,7 +41,7 @@ export function App() {
         {/* SOCIAL PROOF STRIP */}
         <SocialProof />
 
-        {/* SERVICES SECTION */}
+        {/* SERVICES SECTION (5 OFFICIAL CATEGORIES) */}
         <Services onSelectServiceForInquiry={handleOpenInquiry} />
 
         {/* FEATURED WORK PORTFOLIO GRID */}
@@ -55,20 +56,20 @@ export function App() {
         {/* WHY US SECTION */}
         <WhyUs />
 
-        {/* PRICING SECTION */}
-        <Pricing onOpenInquiry={handleOpenInquiry} />
-
         {/* ABOUT FOUNDERS SECTION */}
         <About />
 
-        {/* TESTIMONIALS PLACEHOLDER SECTION */}
+        {/* TESTIMONIALS SECTION */}
         <Testimonials />
 
         {/* FAQ ACCORDION SECTION */}
         <FAQ />
 
-        {/* CONTACT & PROJECT INQUIRY FORM */}
-        <ContactSection preselectedServiceId={selectedServiceForInquiry} />
+        {/* CONTACT & PROJECT ENQUIRY FORM WITH DEPENDENT DROPDOWNS */}
+        <ContactSection 
+          preselectedService={selectedService} 
+          preselectedServiceType={selectedServiceType} 
+        />
       </main>
 
       {/* FOOTER */}

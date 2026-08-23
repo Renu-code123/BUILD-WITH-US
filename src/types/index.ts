@@ -1,40 +1,33 @@
+export interface ServiceSubcategoryGroup {
+  groupName?: string;
+  items: string[];
+}
+
 export interface ServiceItem {
   id: string;
   number: string;
   title: string;
+  displayName: string;
   shortDesc: string;
   fullDesc: string;
-  tags: string[];
-  startingPrice: string;
-  deliveryTime: string;
-  ctaText: string;
+  subcategories: string[] | ServiceSubcategoryGroup[];
   featuresIncluded: string[];
   sampleDeliverable: string;
   disclaimer?: string;
+  accentColor?: string;
+  previewGradient?: string;
 }
 
 export interface ProjectItem {
   id: string;
   title: string;
   subtitle: string;
-  category: 'Websites' | 'Portfolios' | 'Resumes' | 'Posters';
+  category: 'Websites' | 'Portfolios' | 'Resumes' | 'Graphic Design';
   image: string;
   description: string;
   tags: string[];
   demoUrl?: string;
   highlights: string[];
-}
-
-export interface PricingTier {
-  id: string;
-  name: string;
-  price: string;
-  description: string;
-  badge?: string;
-  isPopular?: boolean;
-  features: string[];
-  cta: string;
-  serviceId: string;
 }
 
 export interface FaqItem {
@@ -56,8 +49,11 @@ export interface ProjectInquiry {
   email: string;
   phone: string;
   service: string;
+  serviceType: string;
   budget: string;
   deadline: string;
   description: string;
   reference: string;
+  contactPreference: 'Email' | 'WhatsApp' | 'Phone Call';
 }
+

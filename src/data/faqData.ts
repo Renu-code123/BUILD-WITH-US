@@ -3,42 +3,42 @@ import { FaqItem } from '../types';
 export const faqData: FaqItem[] = [
   {
     id: 'services-offered',
-    question: 'What services do you offer?',
-    answer: 'We provide five core digital services tailored for students, freelancers, creators, small businesses, and working professionals: (1) Modern Website Development, (2) Personal Portfolio Creation, (3) Professional Resume & CV Design, (4) Poster & Advertisement Graphic Design, and (5) Document & Academic Formatting Support.'
+    question: 'What official services do you offer?',
+    answer: 'Build With Us provides five core digital service categories: (01) Website Development (Business Websites, Personal Websites, Landing Pages, Custom Websites), (02) Portfolio & Resume Services (Custom Portfolios, Basic & Professional Resumes), (03) Graphic Design (Social Media Posts, Banners, Posters, Flyers, Stationery), (04) Assignment & Academic Support (Presentation Slide Decks & Document/Project File Preparation), and (05) Research Paper Formatting (IEEE, Springer & LaTeX Template Conversions).'
   },
   {
     id: 'start-project',
-    question: 'How do I start a project?',
-    answer: 'Starting is fast and simple: Click any "Start Your Project" button or fill out our project inquiry form with your requirements. We will review your idea within a few hours, connect via WhatsApp or Email to discuss specifics, provide a transparent transparent upfront quote, and begin crafting as soon as you approve!'
+    question: 'How do I start a project with Build With Us?',
+    answer: 'Simply scroll to our Project Enquiry form or click "Start Your Project". Select your main Service and specific Service Type, fill in your project details, and submit. Our team will review your brief and get back to you with the next steps and project scope within 2 to 4 hours.'
   },
   {
-    id: 'website-cost',
-    question: 'How much does a website cost?',
-    answer: 'Our single-page starter websites begin at just ₹1,499. Portfolios start at ₹999, and Resumes start at ₹299. Final pricing depends on project requirements, total number of pages, custom interactive features, and delivery speed. We always agree on a fixed total price before work begins — no hidden fees.'
+    id: 'pricing-discussion',
+    question: 'How is project pricing determined?',
+    answer: 'Pricing is discussed and agreed upon transparently based on your exact requirements, page count, timeline, and custom features. Once you share your brief through the enquiry form, we provide an upfront estimate before any work begins.'
   },
   {
-    id: 'project-timeline',
-    question: 'How long does a project take?',
-    answer: 'Timeline depends on the service and scope. Resumes and posters are typically delivered within 24 to 48 hours. Portfolios take 2 to 4 days, and full websites are completed within 3 to 7 days. Urgent rush delivery options are also available upon request.'
+    id: 'assignment-support-policy',
+    question: 'How does Assignment & Academic Support work?',
+    answer: 'We strictly provide legitimate technical document formatting, PowerPoint presentation deck design, editing, proofreading, and project file preparation based on your own content and material. We offer both digital file delivery and physical offline printed/bound delivery.'
   },
   {
-    id: 'revisions-policy',
-    question: 'Do you provide revisions?',
-    answer: 'Yes! Every project includes dedicated revision rounds to ensure you are 100% satisfied with the outcome. Starter packages include up to 2 rounds of design refinements, while custom packages include extended revision support during development.'
+    id: 'academic-offline-note',
+    question: 'What are the charges for offline printed assignment delivery?',
+    answer: 'Complete file pricing depends on page count & requirements. Material, printing, binding & delivery charges are included/added according to the selected offline package and your physical delivery location.'
   },
   {
-    id: 'offline-services',
-    question: 'Do you offer offline services?',
-    answer: 'Yes. For document formatting, typing support, presentation printouts, and local poster banners, we offer physical print prep and delivery. Note: Offline physical orders may include additional printing, paper material, and courier delivery charges based on your location.'
+    id: 'research-paper-guarantee',
+    question: 'Do you offer publication guarantees for research paper formatting?',
+    answer: 'No. We strictly provide precision technical formatting adhering to IEEE, Springer, and LaTeX conference/journal templates, citation structuring, and Word ↔ LaTeX conversions. We do not advertise or offer publication guarantees or conference acceptance guarantees.'
   },
   {
-    id: 'final-files-delivery',
-    question: 'How do I receive my final files?',
-    answer: 'All digital assets are delivered securely through direct digital channels including Google Drive links, high-res PDF/PNG downloads, editable template links (Canva/Figma/Word), or direct web deployment to your custom domain.'
+    id: 'timeline-delivery',
+    question: 'What is the typical turnaround time for projects?',
+    answer: 'Turnaround depends on the service scope. Graphic design assets and resumes are typically completed within 24 to 48 hours. Presentation decks and research paper formatting take 1 to 3 days, while complete website builds take 3 to 7 days. Rush delivery is also available upon request.'
   },
   {
-    id: 'custom-package',
-    question: 'Can I request a custom package?',
-    answer: 'Absolutely! If you need a bundle — such as a Website + Portfolio + Resume package, or custom recurring graphic design support — select "Other" or specify your needs in the inquiry form and we will craft a discounted custom bundle.'
+    id: 'file-formats',
+    question: 'How will I receive the completed files?',
+    answer: 'All digital assets are delivered securely via cloud storage links, high-resolution PDFs/PNGs, compiled Overleaf/LaTeX bundles, source design files, or live deployed website URLs.'
   }
 ];

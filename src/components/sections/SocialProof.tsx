@@ -1,13 +1,13 @@
 import React from 'react';
-import { Smartphone, Zap, Tag, HeartHandshake, Sparkles } from 'lucide-react';
+import { Smartphone, Zap, CheckCircle2, HeartHandshake, Sparkles } from 'lucide-react';
 
 export const SocialProof: React.FC = () => {
   const items = [
-    { label: 'Modern Design', icon: Sparkles, color: 'text-pink-400' },
+    { label: 'Modern Aesthetics', icon: Sparkles, color: 'text-cyan-400' },
     { label: 'Mobile Responsive', icon: Smartphone, color: 'text-purple-400' },
-    { label: 'Affordable Pricing', icon: Tag, color: 'text-cyan-400' },
-    { label: 'Fast Delivery', icon: Zap, color: 'text-amber-400' },
-    { label: 'Personal Support', icon: HeartHandshake, color: 'text-rose-400' },
+    { label: 'Tailored Quotes', icon: CheckCircle2, color: 'text-pink-400' },
+    { label: 'Fast Turnaround', icon: Zap, color: 'text-amber-400' },
+    { label: 'Direct Communication', icon: HeartHandshake, color: 'text-emerald-400' },
   ];
 
   return (

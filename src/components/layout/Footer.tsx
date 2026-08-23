@@ -1,11 +1,23 @@
 import React from 'react';
-import { ArrowUp, MessageCircle, Mail } from 'lucide-react';
+import { ArrowUp, Mail, Sparkles } from 'lucide-react';
 
 const InstagramIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
+
+const TwitterXIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+);
+
+const LinkedInIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.21a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"/>
   </svg>
 );
 
@@ -23,7 +35,7 @@ export const Footer: React.FC = () => {
           {/* BRAND COLUMN */}
           <div className="lg:col-span-2">
             <a href="#hero" className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-[#FF3CAC] via-[#784BA0] to-[#2B86C5]">
+              <div className="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-[#00D2FF] via-[#784BA0] to-[#FF3CAC]">
                 <img src="/logo.png" alt="Logo" className="w-full h-full object-cover rounded-full bg-[#05050A]" />
               </div>
               <span className="font-extrabold text-xl text-white tracking-wide">
@@ -36,75 +48,96 @@ export const Footer: React.FC = () => {
             </p>
 
             <p className="text-xs text-slate-400 max-w-sm leading-relaxed mb-6">
-              A modern digital services studio dedicated to creating websites, portfolios, resumes, promotional graphics, and document solutions for students, creators, freelancers, and businesses.
+              A modern creative digital studio crafting custom websites, portfolios & resumes, graphic designs, academic presentation support, and research paper formatting.
             </p>
 
-            <div className="flex items-center gap-3">
+            {/* SOCIAL ICON BUTTONS */}
+            <div className="flex items-center gap-2.5">
               <a
-                href="https://instagram.com"
+                href="mailto:buildwithus0723@gmail.com"
+                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 transition-colors"
+                aria-label="Email"
+                title="Direct Email Contact"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/build_with_us.07?igsi=MXN5ZmdmdzYxaHJwYQ=="
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-[#FF3CAC] text-slate-300 hover:text-white transition-colors"
+                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-[#FF3CAC] hover:bg-pink-500/10 text-slate-300 hover:text-[#FF3CAC] transition-colors"
                 aria-label="Instagram"
+                title="Instagram @build_with_us.07"
               >
                 <InstagramIcon className="w-4 h-4" />
               </a>
+
               <a
-                href="https://wa.me"
+                href="https://x.com/BuildWithUs0723"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-emerald-500 text-slate-300 hover:text-white transition-colors"
-                aria-label="WhatsApp"
+                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-white hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+                aria-label="Twitter / X"
+                title="Twitter / X @BuildWithUs0723"
               >
-                <MessageCircle className="w-4 h-4" />
+                <TwitterXIcon className="w-4 h-4" />
               </a>
+
               <a
-                href="mailto:buildwithus0723@gmail.com"
-                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-500 text-slate-300 hover:text-white transition-colors"
-                aria-label="Email"
+                href="https://www.linkedin.com/in/build-with-us-undefined-71b300430/"
+                target="_blank"
+                rel="noreferrer"
+                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-blue-400 hover:bg-blue-600/10 text-slate-300 hover:text-blue-400 transition-colors"
+                aria-label="LinkedIn"
+                title="LinkedIn Build With Us"
               >
-                <Mail className="w-4 h-4" />
+                <LinkedInIcon className="w-4 h-4" />
               </a>
             </div>
           </div>
 
-          {/* COLUMN 1: COMPANY */}
+          {/* COLUMN 1: NAVIGATION */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
-              Company
+              Explore
             </h4>
             <ul className="space-y-2.5 text-xs font-medium">
-              <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#hero" className="hover:text-white transition-colors">Home</a></li>
               <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-              <li><a href="#work" className="hover:text-white transition-colors">Featured Work</a></li>
+              <li><a href="#work" className="hover:text-white transition-colors">Featured Showcase</a></li>
+              <li><a href="#showcase" className="hover:text-white transition-colors">Device Viewports</a></li>
+              <li><a href="#process" className="hover:text-white transition-colors">How We Build</a></li>
+              <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
               <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
 
-          {/* COLUMN 2: SERVICES */}
+          {/* COLUMN 2: 5 OFFICIAL SERVICES */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
-              Services
+              Official Services
             </h4>
             <ul className="space-y-2.5 text-xs font-medium">
-              <li><a href="#services" className="hover:text-white transition-colors">Websites</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Portfolios</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Resumes & CVs</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Poster Design</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Document Support</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">01. Website Development</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">02. Portfolio & Resume Services</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">03. Graphic Design</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">04. Assignment & Academic Support</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">05. Research Paper Formatting</a></li>
             </ul>
           </div>
 
-          {/* COLUMN 3: CONNECT */}
+          {/* COLUMN 3: CONNECT WITH US */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
-              Connect
+              Connect With Us
             </h4>
             <ul className="space-y-2.5 text-xs font-medium">
-              <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Instagram</a></li>
-              <li><a href="https://wa.me" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">WhatsApp</a></li>
-              <li><a href="mailto:buildwithus0723@gmail.com" className="hover:text-white transition-colors">buildwithus0723@gmail.com</a></li>
+              <li><a href="#contact" className="text-[#00D2FF] hover:underline font-bold">Enquiry Form →</a></li>
+              <li><a href="mailto:buildwithus0723@gmail.com" className="hover:text-cyan-300 transition-colors">buildwithus0723@gmail.com</a></li>
+              <li><a href="https://www.instagram.com/build_with_us.07?igsi=MXN5ZmdmdzYxaHJwYQ==" target="_blank" rel="noreferrer" className="hover:text-[#FF3CAC] transition-colors">Instagram (@build_with_us.07)</a></li>
+              <li><a href="https://x.com/BuildWithUs0723" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Twitter / X (@BuildWithUs0723)</a></li>
+              <li><a href="https://www.linkedin.com/in/build-with-us-undefined-71b300430/" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors">LinkedIn (Build With Us)</a></li>
             </ul>
           </div>
 
