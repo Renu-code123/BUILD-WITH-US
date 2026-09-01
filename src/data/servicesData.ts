@@ -1,5 +1,12 @@
 import { ServiceItem } from '../types';
 
+export interface ServiceTemplate {
+  id: string;
+  name: string;
+  image: string;
+  tag?: string;
+}
+
 export interface ServiceDefinition {
   id: string;
   number: string;
@@ -19,6 +26,7 @@ export interface ServiceDefinition {
   accentColor: string;
   previewGradient: string;
   visualPreviewType: 'web' | 'portfolio' | 'graphic' | 'academic' | 'research';
+  templates?: ServiceTemplate[];
 }
 
 export const OFFICIAL_SERVICES: ServiceDefinition[] = [
@@ -59,30 +67,46 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     title: 'PORTFOLIO & RESUME SERVICES',
     displayName: 'Portfolio & Resume Services',
     shortDesc: 'Standout personal portfolios and ATS-friendly resumes crafted to showcase your skills, career and achievements.',
-    fullDesc: 'Whether you need an interactive developer/designer portfolio website or an executive, ATS-optimized resume, we help you present your work with undeniable polish and clear visual hierarchy.',
-    sampleImage: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80',
-    sampleImageCaption: 'ATS-Compliant Resume & CV Layout',
+    fullDesc: 'Whether you need an interactive developer/designer portfolio website or an executive, ATS-optimized resume, we help you present your work with undeniable polish and clear visual hierarchy. Select from our 6 proven resume templates (R1 to R6) or request a custom build.',
+    sampleImage: '/resumes/r1_template.jpg',
+    sampleImageCaption: 'ATS-Compliant Resume & CV Templates (R1–R6)',
     subcategoryGroups: [
       {
         groupName: 'Portfolio',
         subcategories: ['Custom-Made Portfolio']
       },
       {
-        groupName: 'Resume / CV',
-        subcategories: ['Basic Resume Design', 'Professional Resume']
+        groupName: 'Resume / CV Templates',
+        subcategories: [
+          'Template R1 - Minimalist ATS Resume',
+          'Template R2 - Modern Executive Resume',
+          'Template R3 - Tech & Engineering Resume',
+          'Template R4 - Corporate Professional CV',
+          'Template R5 - Academic & Research CV',
+          'Template R6 - Creative Professional Resume',
+          'Custom Resume Design'
+        ]
       }
     ],
     featuresIncluded: [
+      '6 Production-ready resume templates (R1 to R6) tailored to your industry',
+      '100% ATS parser compliant layout & recruiter-friendly hierarchy',
       'Interactive project showcase & skill badges for portfolios',
-      'ATS-compliant structured layout for recruiter screening',
-      'Modern typography, clear hierarchy & tailored color palettes',
-      'High-resolution PDF & editable vector/document deliverables',
-      'Direct social & contact integration'
+      'High-resolution PDF & editable document deliverables',
+      'Direct social & contact integration with tailored typography'
     ],
-    sampleDeliverable: 'Interactive live portfolio link or print-ready ATS-compliant PDF resume.',
+    sampleDeliverable: 'Interactive live portfolio link or print-ready ATS-compliant PDF resume (Templates R1–R6).',
     accentColor: '#FF3CAC',
     previewGradient: 'from-pink-500/20 via-purple-500/20 to-indigo-500/20',
-    visualPreviewType: 'portfolio'
+    visualPreviewType: 'portfolio',
+    templates: [
+      { id: 'r1', name: 'Template R1: ATS Minimalist', image: '/resumes/r1_template.jpg', tag: 'ATS Standard' },
+      { id: 'r2', name: 'Template R2: Modern Executive', image: '/resumes/r2_template.jpg', tag: 'Executive' },
+      { id: 'r3', name: 'Template R3: Tech & Engineering', image: '/resumes/r3_template.jpg', tag: 'Tech / Dev' },
+      { id: 'r4', name: 'Template R4: Corporate CV', image: '/resumes/r4_template.jpg', tag: 'Corporate' },
+      { id: 'r5', name: 'Template R5: Academic & Research', image: '/resumes/r5_template.jpg', tag: 'Academic' },
+      { id: 'r6', name: 'Template R6: Creative Professional', image: '/resumes/r6_template.jpg', tag: 'Hybrid' }
+    ]
   },
   {
     id: 'graphic-design',
@@ -91,8 +115,8 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     displayName: 'Graphic Design',
     shortDesc: 'Eye-catching social media visuals, promotional creatives, event posters, flyers and corporate stationery.',
     fullDesc: 'From viral Instagram carousels and YouTube thumbnails to event posters and corporate business cards, we create impactful graphic designs aligned with modern aesthetic standards.',
-    sampleImage: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
-    sampleImageCaption: 'Social Media & Promo Creatives',
+    sampleImage: '/summit-2026-poster.png',
+    sampleImageCaption: 'Promotional Poster & Social Media Creatives',
     subcategoryGroups: [
       {
         groupName: 'Social Media Design',

@@ -9,7 +9,22 @@ interface ServiceModalProps {
 }
 
 export const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, onRequestService }) => {
+  const [selectedTemplateIndex, setSelectedTemplateIndex] = React.useState<number>(0);
+
+  // Reset selected template when service changes
+  React.useEffect(() => {
+    setSelectedTemplateIndex(0);
+  }, [service]);
+
   if (!service) return null;
+
+  const currentImage = service.templates && service.templates.length > 0
+    ? service.templates[selectedTemplateIndex]?.image || service.sampleImage
+    : service.sampleImage;
+
+  const currentCaption = service.templates && service.templates.length > 0
+    ? `${service.templates[selectedTemplateIndex]?.name} (${service.templates[selectedTemplateIndex]?.tag})`
+    : service.sampleImageCaption;
 
   return (
     <div 
@@ -53,17 +68,67 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, on
         </h3>
 
         {/* REAL SAMPLE IMAGE BANNER */}
-        <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-6 border border-white/15 shadow-lg">
+        <div className="relative aspect-[16/10] sm:aspect-video w-full rounded-2xl overflow-hidden mb-4 border border-white/15 shadow-lg bg-black/60 flex items-center justify-center">
           <img
-            src={service.sampleImage}
+            src={currentImage}
             alt={service.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top transition-all duration-300"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          <div className="absolute bottom-3 left-3 px-3 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/15 text-xs font-bold text-white">
-            {service.sampleImageCaption}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+            <div className="px-3 py-1 rounded-lg bg-black/80 backdrop-blur-md border border-white/15 text-xs font-bold text-white shadow-md">
+              {currentCaption}
+            </div>
+            {service.templates && (
+              <span className="text-[11px] font-mono font-bold text-pink-400 bg-pink-950/70 border border-pink-500/30 px-2 py-0.5 rounded">
+                {selectedTemplateIndex + 1} / {service.templates.length}
+              </span>
+            )}
           </div>
         </div>
+
+        {/* TEMPLATE PICKER STRIP IF TEMPLATES EXIST */}
+        {service.templates && service.templates.length > 0 && (
+          <div className="mb-6 p-3.5 rounded-2xl bg-[#0E0E1B] border border-pink-500/20">
+            <div className="text-xs font-bold text-white mb-2 flex items-center justify-between">
+              <span className="flex items-center gap-1.5 text-pink-400">
+                <Sparkles className="w-3.5 h-3.5" /> 6 Ready-to-Use Resume Templates (R1–R6):
+              </span>
+              <span className="text-[10px] text-slate-400">Click to switch preview</span>
+            </div>
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+              {service.templates.map((tpl, tIdx) => {
+                const isSelected = selectedTemplateIndex === tIdx;
+                return (
+                  <button
+                    key={tpl.id}
+                    type="button"
+                    onClick={() => setSelectedTemplateIndex(tIdx)}
+                    className={`relative rounded-xl p-1.5 text-left border transition-all duration-200 overflow-hidden flex flex-col items-center ${
+                      isSelected
+                        ? 'border-pink-400 bg-pink-500/20 shadow-md shadow-pink-500/20 ring-1 ring-pink-400'
+                        : 'border-white/10 bg-white/[0.03] hover:border-white/30 hover:bg-white/[0.08]'
+                    }`}
+                  >
+                    <div className="w-full aspect-[3/4] rounded-lg overflow-hidden mb-1.5 bg-black/50 border border-white/10">
+                      <img
+                        src={tpl.image}
+                        alt={tpl.name}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                    <span className="text-[10px] font-extrabold text-white font-mono leading-none">
+                      {tpl.id.toUpperCase()}
+                    </span>
+                    <span className="text-[8px] text-slate-400 truncate w-full text-center mt-0.5">
+                      {tpl.tag}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         <p className="text-sm sm:text-base text-slate-300 mb-6 leading-relaxed">
           {service.fullDesc}

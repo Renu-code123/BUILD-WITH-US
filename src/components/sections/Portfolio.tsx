@@ -71,7 +71,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A12] via-transparent to-transparent opacity-80" />
@@ -134,11 +134,13 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
               <X className="w-5 h-5" />
             </button>
 
-            <div className="aspect-video w-full rounded-2xl overflow-hidden mb-6 border border-white/10">
+            <div className={`w-full rounded-2xl overflow-hidden mb-6 border border-white/10 bg-black/60 flex items-center justify-center ${
+              selectedProject.category === 'Resumes' || selectedProject.category === 'Graphic Design' ? 'max-h-[60vh] p-2' : 'aspect-video'
+            }`}>
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="w-full h-full object-cover"
+                className={selectedProject.category === 'Resumes' || selectedProject.category === 'Graphic Design' ? 'max-h-[56vh] w-auto object-contain rounded-lg shadow-2xl' : 'w-full h-full object-cover object-top'}
               />
             </div>
 
