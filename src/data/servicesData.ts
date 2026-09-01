@@ -158,7 +158,12 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     sampleDeliverable: 'Ultra HD digital assets and print-ready vector artwork files.',
     accentColor: '#784BA0',
     previewGradient: 'from-purple-500/20 via-pink-500/20 to-rose-500/20',
-    visualPreviewType: 'graphic'
+    visualPreviewType: 'graphic',
+    templates: [
+      { id: 'summit', name: 'Summit 2026 Keynote Poster', image: '/summit-2026-poster.png', tag: 'Conference' },
+      { id: 'girlscript', name: 'GirlScript Summer of Code', image: '/girlscript-summer-of-code.png', tag: 'GSSoC Open Source' },
+      { id: 'gssoc', name: 'GSSoC Creative Poster', image: '/gssoc-poster.png', tag: 'Social Media' }
+    ]
   },
   {
     id: 'assignment-academic-support',

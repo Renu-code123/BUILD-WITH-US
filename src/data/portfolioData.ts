@@ -110,5 +110,25 @@ export const portfolioData: ProjectItem[] = [
     description: 'High-impact promotional graphics and social media creatives featuring vibrant gradient lighting, modern typography and clean branding.',
     tags: ['Promotional Poster', 'Social Media Graphics', 'Instagram Posts', 'High-Res Output'],
     highlights: ['Optimized for Instagram & LinkedIn feeds', 'Ultra HD export resolution', 'Vector print preparation']
+  },
+  {
+    id: 'girlscript-poster',
+    title: 'GirlScript Summer of Code',
+    subtitle: 'Event & Open-Source Promotional Poster',
+    category: 'Graphic Design',
+    image: '/girlscript-summer-of-code.png',
+    description: 'Dynamic event and hackathon poster design celebrating open-source development with vibrant community branding and clean typography.',
+    tags: ['Event Poster', 'GSSoC 2026', 'Open Source', 'High-Res Output'],
+    highlights: ['High-contrast visual hierarchy', 'Custom community brand palette', 'Social and print-ready formats']
+  },
+  {
+    id: 'gssoc-poster',
+    title: 'GSSoC Creative Poster',
+    subtitle: 'Social Media & Tech Campaign Creative',
+    category: 'Graphic Design',
+    image: '/gssoc-poster.png',
+    description: 'Engaging promotional creative for developer communities and open-source programs, optimized for social platforms and announcements.',
+    tags: ['Social Graphics', 'GSSoC Banner', 'Developer Campaign', 'Vector Print'],
+    highlights: ['Multi-platform aspect ratios', 'Eye-catching tech graphics', 'High engagement visual styling']
   }
 ];

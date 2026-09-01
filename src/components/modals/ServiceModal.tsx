@@ -80,7 +80,14 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, on
               {currentCaption}
             </div>
             {service.templates && (
-              <span className="text-[11px] font-mono font-bold text-pink-400 bg-pink-950/70 border border-pink-500/30 px-2 py-0.5 rounded">
+              <span 
+                className="text-[11px] font-mono font-bold px-2 py-0.5 rounded border"
+                style={{
+                  color: service.accentColor,
+                  backgroundColor: `${service.accentColor}25`,
+                  borderColor: `${service.accentColor}50`
+                }}
+              >
                 {selectedTemplateIndex + 1} / {service.templates.length}
               </span>
             )}
@@ -89,10 +96,13 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, on
 
         {/* TEMPLATE PICKER STRIP IF TEMPLATES EXIST */}
         {service.templates && service.templates.length > 0 && (
-          <div className="mb-6 p-3.5 rounded-2xl bg-[#0E0E1B] border border-pink-500/20">
+          <div 
+            className="mb-6 p-3.5 rounded-2xl bg-[#0E0E1B] border"
+            style={{ borderColor: `${service.accentColor}33` }}
+          >
             <div className="text-xs font-bold text-white mb-2 flex items-center justify-between">
-              <span className="flex items-center gap-1.5 text-pink-400">
-                <Sparkles className="w-3.5 h-3.5" /> 6 Ready-to-Use Resume Templates (R1–R6):
+              <span className="flex items-center gap-1.5" style={{ color: service.accentColor }}>
+                <Sparkles className="w-3.5 h-3.5" /> Featured Templates & Samples ({service.templates.length}):
               </span>
               <span className="text-[10px] text-slate-400">Click to switch preview</span>
             </div>
@@ -106,9 +116,15 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, on
                     onClick={() => setSelectedTemplateIndex(tIdx)}
                     className={`relative rounded-xl p-1.5 text-left border transition-all duration-200 overflow-hidden flex flex-col items-center ${
                       isSelected
-                        ? 'border-pink-400 bg-pink-500/20 shadow-md shadow-pink-500/20 ring-1 ring-pink-400'
+                        ? 'shadow-md ring-1'
                         : 'border-white/10 bg-white/[0.03] hover:border-white/30 hover:bg-white/[0.08]'
                     }`}
+                    style={isSelected ? {
+                      borderColor: service.accentColor,
+                      backgroundColor: `${service.accentColor}25`,
+                      boxShadow: `0 4px 12px ${service.accentColor}30`,
+                      outlineColor: service.accentColor
+                    } : undefined}
                   >
                     <div className="w-full aspect-[3/4] rounded-lg overflow-hidden mb-1.5 bg-black/50 border border-white/10">
                       <img
@@ -117,7 +133,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, on
                         className="w-full h-full object-cover object-top"
                       />
                     </div>
-                    <span className="text-[10px] font-extrabold text-white font-mono leading-none">
+                    <span className="text-[10px] font-extrabold text-white font-mono leading-none truncate w-full text-center">
                       {tpl.id.toUpperCase()}
                     </span>
                     <span className="text-[8px] text-slate-400 truncate w-full text-center mt-0.5">
