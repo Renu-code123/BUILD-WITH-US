@@ -45,7 +45,7 @@
 
 ### 4. 💼 Core Services & Interactive Detail Modals
 Five tailored services:
-1. **Website Development** (Starting at ₹1,499+)
+1. **Website Development** (Starting at ₹2,000+)
 2. **Portfolio Creation** (Starting at ₹999+)
 3. **Resume & CV Design** (Starting at ₹299+)
 4. **Poster & Advertisement Design** (Starting at ₹499+)
@@ -74,8 +74,7 @@ Five tailored services:
 - Custom quote CTA button
 
 ### 10. 👥 Founders & Philosophy
-- Two-founder card layout (Rohan Sharma & Ananya Verma) with bios, roles, and skills
-- Core philosophy: *"Professional digital work should be accessible, transparent and personal."*
+- Two-founder card layout (Renu Kumari Prajapati & Stuti Tiwari) with bios, roles, and skills
 
 ### 11. ⭐ Authentic Testimonials Placeholder
 - Clean empty-state design with message: *“Client testimonials will appear here as we complete projects.”* ready for genuine client reviews.
