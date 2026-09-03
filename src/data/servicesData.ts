@@ -160,6 +160,9 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     previewGradient: 'from-purple-500/20 via-pink-500/20 to-rose-500/20',
     visualPreviewType: 'graphic',
     templates: [
+      { id: 'inamigos-volunteer', name: 'InAmigos Foundation: Volunteer Drive', image: '/inamigos-volunteer-poster.png', tag: 'Volunteer Campaign' },
+      { id: 'artist-of-the-month', name: 'Artist of the Month: Haechan (NCT)', image: '/artist-of-the-month-poster.png', tag: 'Editorial Design' },
+      { id: 'inamigos-sewa', name: 'InAmigos Foundation: Project SEWA', image: '/inamigos-sewa-poster.png', tag: 'Charity Drive' },
       { id: 'summit', name: 'Summit 2026 Keynote Poster', image: '/summit-2026-poster.png', tag: 'Conference' },
       { id: 'girlscript', name: 'GirlScript Summer of Code', image: '/girlscript-summer-of-code.png', tag: 'GSSoC Open Source' },
       { id: 'gssoc', name: 'GSSoC Creative Poster', image: '/gssoc-poster.png', tag: 'Social Media' }

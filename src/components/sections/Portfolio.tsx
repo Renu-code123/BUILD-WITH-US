@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Sparkles, X, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, Sparkles, X, CheckCircle2, ExternalLink } from 'lucide-react';
 import { portfolioData } from '../../data/portfolioData';
 import { ProjectItem } from '../../types';
 
@@ -81,10 +81,24 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
                   {project.category}
                 </div>
 
-                {/* TOP RIGHT ARROW ICON */}
-                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white group-hover:bg-[#00D2FF] group-hover:text-black group-hover:scale-110 transition-all">
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </div>
+                {/* TOP RIGHT ARROW ICON / LIVE DEMO BUTTON */}
+                {project.demoUrl ? (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute top-4 right-4 z-20 px-3 py-1.5 rounded-full bg-[#00D2FF] hover:bg-white text-black font-extrabold text-[11px] flex items-center gap-1.5 shadow-lg shadow-cyan-500/30 transition-all hover:scale-105"
+                    title={`Open live site for ${project.title}`}
+                  >
+                    <span>Live Site</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                  </a>
+                ) : (
+                  <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white group-hover:bg-[#00D2FF] group-hover:text-black group-hover:scale-110 transition-all">
+                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </div>
+                )}
               </div>
 
               {/* CARD DETAILS */}
@@ -93,9 +107,27 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
                   <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00D2FF] transition-colors">
                     {project.title}
                   </h3>
-                  <div className="text-xs font-medium text-[#00D2FF] mb-3">
+                  <div className="text-xs font-medium text-[#00D2FF] mb-2">
                     {project.subtitle}
                   </div>
+
+                  {/* LIVE LINK PILL IF AVAILABLE */}
+                  {project.demoUrl && (
+                    <div className="mb-3">
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#00D2FF]/10 hover:bg-[#00D2FF]/20 border border-[#00D2FF]/30 text-[11px] font-semibold text-[#00D2FF] transition-all hover:underline"
+                        title="Click to visit live website in a new tab"
+                      >
+                        <span className="truncate max-w-[200px]">{project.demoUrl.replace(/^https?:\/\//, '')}</span>
+                        <ArrowUpRight className="w-3 h-3 shrink-0 stroke-[2.5]" />
+                      </a>
+                    </div>
+                  )}
+
                   <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed mb-4">
                     {project.description}
                   </p>
@@ -155,6 +187,35 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
             <p className="text-sm font-semibold text-[#00D2FF] mb-4">{selectedProject.subtitle}</p>
             <p className="text-sm text-slate-300 leading-relaxed mb-6">{selectedProject.description}</p>
 
+            {/* LIVE URL BANNER */}
+            {selectedProject.demoUrl && (
+              <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-[#00D2FF]/15 via-[#784BA0]/15 to-transparent border border-[#00D2FF]/40 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg shadow-cyan-500/10">
+                <div className="text-left w-full sm:w-auto">
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-[#00D2FF] mb-0.5 flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Live Website Active
+                  </div>
+                  <a
+                    href={selectedProject.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-bold text-white hover:text-[#00D2FF] transition-colors underline flex items-center gap-1"
+                  >
+                    <span>{selectedProject.demoUrl.replace(/^https?:\/\//, '')}</span>
+                  </a>
+                </div>
+                <a
+                  href={selectedProject.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#00D2FF] hover:bg-white text-black font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-lg shadow-cyan-500/30 hover:scale-105 shrink-0"
+                >
+                  <span>Open Live Website</span>
+                  <ExternalLink className="w-4 h-4 stroke-[2.5]" />
+                </a>
+              </div>
+            )}
+
             <div className="mb-6">
               <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider mb-2">Key Highlights:</h4>
               <ul className="space-y-1.5">
@@ -171,20 +232,33 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
               <div className="text-xs text-slate-400">
                 Want a similar build for your brand?
               </div>
-              <button
-                onClick={() => {
-                  const serviceName = selectedProject.category === 'Websites' 
-                    ? 'Website Development' 
-                    : selectedProject.category === 'Portfolios' || selectedProject.category === 'Resumes'
-                    ? 'Portfolio & Resume Services'
-                    : 'Graphic Design';
-                  setSelectedProject(null);
-                  onOpenInquiry(serviceName);
-                }}
-                className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-[#00D2FF] via-[#784BA0] to-[#FF3CAC] text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2"
-              >
-                <span>Build Something Similar →</span>
-              </button>
+              <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                {selectedProject.demoUrl && (
+                  <a
+                    href={selectedProject.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 flex items-center justify-center gap-2 transition-all"
+                  >
+                    <span>Visit Live Site</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                <button
+                  onClick={() => {
+                    const serviceName = selectedProject.category === 'Websites' 
+                      ? 'Website Development' 
+                      : selectedProject.category === 'Portfolios' || selectedProject.category === 'Resumes'
+                      ? 'Portfolio & Resume Services'
+                      : 'Graphic Design';
+                    setSelectedProject(null);
+                    onOpenInquiry(serviceName);
+                  }}
+                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-[#00D2FF] via-[#784BA0] to-[#FF3CAC] text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+                >
+                  <span>Build Something Similar →</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -9,6 +9,7 @@ export const portfolioData: ProjectItem[] = [
     image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80',
     description: 'A modern, responsive business website featuring interactive menus, location hours, responsive UI and streamlined inquiries.',
     tags: ['Business Website', 'Responsive Design', 'Fast Load', 'Interactive UI'],
+    demoUrl: 'https://nova-cafe-iota.vercel.app/',
     highlights: ['Sub-second page load speed', 'Custom dark theme styling', 'Mobile-first navigation flow']
   },
   {
@@ -19,6 +20,7 @@ export const portfolioData: ProjectItem[] = [
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80',
     description: 'Dynamic landing page engineered with modern typography, program highlights, and direct communication integrations.',
     tags: ['Landing Page', 'High Conversion', 'Modern UI', 'Direct Inquiry'],
+    demoUrl: 'https://fitforgeathleticshub.vercel.app',
     highlights: ['Interactive feature cards', 'Fluid micro-animations', 'Lead generation layout']
   },
   {
@@ -26,9 +28,10 @@ export const portfolioData: ProjectItem[] = [
     title: 'Alex Morgan',
     subtitle: 'Custom Full-Stack Developer Portfolio',
     category: 'Portfolios',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80',
+    image: '/alex-morgan-cover.jpg',
     description: 'Minimalist glassmorphic developer portfolio showcasing projects, technical skill badges, interactive cards and contact flow.',
     tags: ['Custom Portfolio', 'Skill Badges', 'Glassmorphism', 'Clean Layout'],
+    demoUrl: 'https://alexmorganportfolio.vercel.app',
     highlights: ['Interactive project details', 'Responsive grid system', 'Direct CV download link']
   },
   {
@@ -36,9 +39,10 @@ export const portfolioData: ProjectItem[] = [
     title: 'Sarah Jenkins',
     subtitle: 'Creative UI/UX Designer Portfolio',
     category: 'Portfolios',
-    image: 'https://images.unsplash.com/photo-1542744094-3a312169542a?auto=format&fit=crop&w=800&q=80',
+    image: '/sarah-jenkins-cover.jpg',
     description: 'Visual designer portfolio showcasing case studies, mobile app wireframes, prototype demos and creative skill highlights.',
     tags: ['Designer Portfolio', 'Case Studies', 'Vibrant Gradients', 'Clean Grid'],
+    demoUrl: 'https://sarahjenkinsportfolio.vercel.app',
     highlights: ['High-impact visual showcase', 'Smooth category filtering', 'Tailored aesthetic palette']
   },
   {
@@ -100,6 +104,36 @@ export const portfolioData: ProjectItem[] = [
     description: 'Modern hybrid resume balancing creative visual presentation with strict readability and corporate-friendly structure.',
     tags: ['Template R6', 'Creative Pro', 'Hybrid Design', 'ATS Compatible'],
     highlights: ['Modern section accents', 'Clear timeline flow', 'Versatile across all industries']
+  },
+  {
+    id: 'inamigos-volunteer-poster',
+    title: 'InAmigos Foundation — Join as a Volunteer',
+    subtitle: 'Community Outreach & Volunteer Recruitment Poster',
+    category: 'Graphic Design',
+    image: '/inamigos-volunteer-poster.png',
+    description: 'Inspiring non-profit outreach campaign poster designed for InAmigos Foundation to drive volunteer recruitment and social welfare initiatives.',
+    tags: ['Volunteer Campaign', 'InAmigos Foundation', 'Social Impact', 'Poster Design'],
+    highlights: ['Heartfelt community storytelling layout', 'High-visibility call-to-action branding', 'Optimized for social media and print']
+  },
+  {
+    id: 'artist-of-the-month-poster',
+    title: 'Artist of the Month — Haechan (NCT)',
+    subtitle: 'Studio Choom Feature Creative by Stuti Tiwari',
+    category: 'Graphic Design',
+    image: '/artist-of-the-month-poster.png',
+    description: 'Sleek editorial feature creative celebrating Haechan of NCT as Artist of the Month for June 2024, designed with luxury black & gold marble styling by Stuti Tiwari.',
+    tags: ['Artist of the Month', 'Editorial Design', 'Black & Gold', 'Stuti Tiwari'],
+    highlights: ['Multi-frame circular portrait composition', 'Luxury gold typography & marble backdrop', 'High-contrast visual hierarchy']
+  },
+  {
+    id: 'inamigos-sewa-poster',
+    title: 'Project SEWA — InAmigos Foundation',
+    subtitle: 'Clothing & Food Donation Awareness Poster',
+    category: 'Graphic Design',
+    image: '/inamigos-sewa-poster.png',
+    description: 'High-impact awareness campaign creative for Project SEWA by InAmigos Foundation, spotlighting ground-level donation missions to provide food and clothing to those in need.',
+    tags: ['Project SEWA', 'InAmigos Foundation', 'Charity Campaign', 'Humanitarian Drive'],
+    highlights: ['Grid showcase of ground-level donation drives', 'Compelling mission statement callouts', 'Multi-channel social awareness hashtags']
   },
   {
     id: 'cyberlaunch-poster',
