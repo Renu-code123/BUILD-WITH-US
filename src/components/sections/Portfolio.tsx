@@ -11,7 +11,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
-  const filters = ['All', 'Websites', 'Portfolios', 'Resumes', 'Graphic Design'];
+  const filters = ['All', 'Websites', 'Portfolios', 'Resumes', 'Graphic Design', 'Research Paper Formatting'];
 
   const filteredProjects = activeFilter === 'All'
     ? portfolioData
@@ -167,12 +167,12 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
             </button>
 
             <div className={`w-full rounded-2xl overflow-hidden mb-6 border border-white/10 bg-black/60 flex items-center justify-center ${
-              selectedProject.category === 'Resumes' || selectedProject.category === 'Graphic Design' ? 'max-h-[60vh] p-2' : 'aspect-video'
+              selectedProject.category === 'Resumes' || selectedProject.category === 'Graphic Design' || selectedProject.category === 'Research Paper Formatting' ? 'max-h-[60vh] p-2' : 'aspect-video'
             }`}>
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className={selectedProject.category === 'Resumes' || selectedProject.category === 'Graphic Design' ? 'max-h-[56vh] w-auto object-contain rounded-lg shadow-2xl' : 'w-full h-full object-cover object-top'}
+                className={selectedProject.category === 'Resumes' || selectedProject.category === 'Graphic Design' || selectedProject.category === 'Research Paper Formatting' ? 'max-h-[56vh] w-auto object-contain rounded-lg shadow-2xl' : 'w-full h-full object-cover object-top'}
               />
             </div>
 
@@ -250,6 +250,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
                       ? 'Website Development' 
                       : selectedProject.category === 'Portfolios' || selectedProject.category === 'Resumes'
                       ? 'Portfolio & Resume Services'
+                      : selectedProject.category === 'Research Paper Formatting'
+                      ? 'Research Paper Formatting'
                       : 'Graphic Design';
                     setSelectedProject(null);
                     onOpenInquiry(serviceName);

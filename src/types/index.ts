@@ -22,7 +22,7 @@ export interface ProjectItem {
   id: string;
   title: string;
   subtitle: string;
-  category: 'Websites' | 'Portfolios' | 'Resumes' | 'Graphic Design';
+  category: 'Websites' | 'Portfolios' | 'Resumes' | 'Graphic Design' | 'Research Paper Formatting';
   image: string;
   description: string;
   tags: string[];

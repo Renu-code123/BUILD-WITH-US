@@ -4,6 +4,7 @@ export interface ServiceTemplate {
   id: string;
   name: string;
   image: string;
+  pdfUrl?: string;
   tag?: string;
 }
 
@@ -217,8 +218,8 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     displayName: 'Research Paper Formatting',
     shortDesc: 'Precise IEEE, Springer and LaTeX template formatting, equation structuring and Word ↔ LaTeX conversions.',
     fullDesc: 'Ensure your scholarly manuscripts comply strictly with publication formatting guidelines. We format IEEE, Springer, and custom publisher LaTeX templates, citations, formulas, figures and tables without altering your core research.',
-    sampleImage: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80',
-    sampleImageCaption: 'IEEE / Springer / LaTeX Formatting',
+    sampleImage: '/templates/ieee_template.png',
+    sampleImageCaption: 'IEEE & Springer Publication Format Templates',
     subcategoryGroups: [
       {
         subcategories: [
@@ -240,7 +241,11 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     importantNote: 'We strictly provide technical template formatting, citation styling and conversion support. We do not offer or advertise publication guarantees, acceptance guarantees, or journal/conference acceptance.',
     accentColor: '#10B981',
     previewGradient: 'from-emerald-500/20 via-teal-500/20 to-cyan-500/20',
-    visualPreviewType: 'research'
+    visualPreviewType: 'research',
+    templates: [
+      { id: 'ieee', name: 'IEEE Format Template', image: '/templates/ieee_template.png', pdfUrl: '/templates/ieee_template.pdf', tag: 'IEEE Two-Column' },
+      { id: 'springer', name: 'Springer Format Template', image: '/templates/springer_template.png', pdfUrl: '/templates/springer_template.pdf', tag: 'Springer LNCS/Nature' }
+    ]
   }
 ];
 

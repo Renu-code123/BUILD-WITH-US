@@ -164,5 +164,25 @@ export const portfolioData: ProjectItem[] = [
     description: 'Engaging promotional creative for developer communities and open-source programs, optimized for social platforms and announcements.',
     tags: ['Social Graphics', 'GSSoC Banner', 'Developer Campaign', 'Vector Print'],
     highlights: ['Multi-platform aspect ratios', 'Eye-catching tech graphics', 'High engagement visual styling']
+  },
+  {
+    id: 'ieee-template-format',
+    title: 'IEEE Format Template',
+    subtitle: 'Standard Two-Column Research Paper Layout',
+    category: 'Research Paper Formatting',
+    image: '/templates/ieee_template.png',
+    description: 'Compliant IEEE standard template formatting featuring dual-column layout, abstract formatting, equation numbering, and IEEE citation style.',
+    tags: ['IEEE Template', 'Research Paper', 'Two-Column Layout', 'Publication Ready'],
+    highlights: ['Standard IEEE dual-column grid', 'Formula & equation typography', 'BibTeX reference structuring']
+  },
+  {
+    id: 'springer-template-format',
+    title: 'Springer Format Template',
+    subtitle: 'Scholarly Publisher Camera-Ready Layout',
+    category: 'Research Paper Formatting',
+    image: '/templates/springer_template.png',
+    description: 'Precision Springer publisher formatting for conferences and journals including author metadata hierarchy, table typesetting, and standard bibliography.',
+    tags: ['Springer Format', 'LNCS Template', 'Camera-Ready PDF', 'LaTeX Support'],
+    highlights: ['Single-column Springer layout standard', 'Strict margin & heading hierarchy', 'Citation & figure cross-referencing']
   }
 ];
