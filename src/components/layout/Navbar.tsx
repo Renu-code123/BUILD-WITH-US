@@ -23,11 +23,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
 
   const navLinks = [
     { name: 'Home', href: '#hero' },
+    { name: 'About', href: '#what-we-are-for' },
     { name: 'Services', href: '#services' },
+    { name: 'Pricing', href: '#pricing' },
     { name: 'Work', href: '#work' },
-    { name: 'Showcase', href: '#showcase' },
     { name: 'Process', href: '#process' },
-    { name: 'About', href: '#about' },
+    { name: 'Team', href: '#about' },
     { name: 'FAQ', href: '#faq' },
     { name: 'Contact', href: '#contact' },
   ];

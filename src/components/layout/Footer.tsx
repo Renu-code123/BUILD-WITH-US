@@ -104,16 +104,17 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-xs font-medium">
               <li><a href="#hero" className="hover:text-white transition-colors">Home</a></li>
+              <li><a href="#what-we-are-for" className="hover:text-white transition-colors text-cyan-300">What We Are For</a></li>
               <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
+              <li><a href="#pricing" className="hover:text-white transition-colors text-[#00D2FF]">Pricing & Plans</a></li>
               <li><a href="#work" className="hover:text-white transition-colors">Featured Showcase</a></li>
-              <li><a href="#showcase" className="hover:text-white transition-colors">Device Viewports</a></li>
               <li><a href="#process" className="hover:text-white transition-colors">How We Build</a></li>
-              <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#about" className="hover:text-white transition-colors">Founders & Team</a></li>
               <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
             </ul>
           </div>
 
-          {/* COLUMN 2: 5 OFFICIAL SERVICES */}
+          {/* COLUMN 2: 7 OFFICIAL SERVICES */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
               Official Services
@@ -122,8 +123,10 @@ export const Footer: React.FC = () => {
               <li><a href="#services" className="hover:text-white transition-colors">01. Website Development</a></li>
               <li><a href="#services" className="hover:text-white transition-colors">02. Portfolio & Resume Services</a></li>
               <li><a href="#services" className="hover:text-white transition-colors">03. Graphic Design</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">04. Assignment & Academic Support</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">04. Academic Support</a></li>
               <li><a href="#services" className="hover:text-white transition-colors">05. Research Paper Formatting</a></li>
+              <li><a href="#pricing" className="hover:text-white transition-colors">06. Website Maintenance</a></li>
+              <li><a href="#pricing" className="hover:text-white transition-colors">07. Modular Add-ons</a></li>
             </ul>
           </div>
 

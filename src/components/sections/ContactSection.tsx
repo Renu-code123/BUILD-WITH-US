@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { ProjectInquiry } from '../../types';
 import { InquirySuccessModal } from '../modals/InquirySuccessModal';
-import { OFFICIAL_SERVICES } from '../../data/servicesData';
+import { OFFICIAL_SERVICES, SERVICE_OPTIONS } from '../../data/servicesData';
 
 const InstagramIcon: React.FC<{ className?: string }> = ({ className = "w-5 h-5" }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -33,22 +33,27 @@ const LinkedInIcon: React.FC<{ className?: string }> = ({ className = "w-5 h-5" 
   </svg>
 );
 
-const SERVICE_OPTIONS = [
-  'Website Development',
-  'Portfolio & Resume Services',
-  'Graphic Design',
-  'Assignment & Academic Support',
-  'Research Paper Formatting'
+const BUDGET_OPTIONS = [
+  'Flexible / Discuss with team',
+  'Under ₹1,000 (Quick Graphic / Basic Resume / PPT)',
+  '₹1,000 – ₹3,000 (Landing Page / ATS Resume / Research Paper)',
+  '₹3,000 – ₹6,000 (Business Website / Custom Portfolio)',
+  '₹6,000 – ₹15,000 (Multi-Page Website / Project Suite)',
+  '₹15,000+ (Startup Website Package / E-Commerce / App)',
+  'Monthly Maintenance (₹1,500 – ₹4,000/month)',
+  'Custom Scope / Enterprise'
 ];
 
 interface ContactSectionProps {
   preselectedService?: string;
   preselectedServiceType?: string;
+  preselectedBudget?: string;
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ 
   preselectedService, 
-  preselectedServiceType 
+  preselectedServiceType,
+  preselectedBudget
 }) => {
   const [formData, setFormData] = useState<ProjectInquiry>({
     name: '',
@@ -67,29 +72,62 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedInquiry, setSubmittedInquiry] = useState<ProjectInquiry | null>(null);
 
-  // Sync props from service cards
+  // Sync props from pricing or service cards
   useEffect(() => {
     if (preselectedService) {
       const matchedService = OFFICIAL_SERVICES.find(
-        (s) => s.displayName === preselectedService || s.title.toLowerCase() === preselectedService.toLowerCase()
+        (s) => s.displayName.toLowerCase() === preselectedService.toLowerCase() || 
+               s.title.toLowerCase() === preselectedService.toLowerCase()
       );
 
       if (matchedService) {
+        let resolvedType = preselectedServiceType || '';
+        const allSubs = matchedService.subcategoryGroups.flatMap((g) => g.subcategories);
+        
+        if (preselectedServiceType) {
+          const found = allSubs.find(
+            (sub) => sub.toLowerCase().includes(preselectedServiceType.toLowerCase()) ||
+                     preselectedServiceType.toLowerCase().includes(sub.toLowerCase().split(' (')[0])
+          );
+          if (found) {
+            resolvedType = found;
+          }
+        }
+
+        let resolvedBudget = '';
+        if (preselectedBudget) {
+          const b = preselectedBudget.toLowerCase();
+          if (b.includes('/month') || b.includes('month') || b.includes('maint')) {
+            resolvedBudget = 'Monthly Maintenance (₹1,500 – ₹4,000/month)';
+          } else {
+            const numeric = parseInt(preselectedBudget.replace(/[^\d]/g, ''), 10);
+            if (!isNaN(numeric)) {
+              if (numeric < 1000) resolvedBudget = 'Under ₹1,000 (Quick Graphic / Basic Resume / PPT)';
+              else if (numeric <= 3000) resolvedBudget = '₹1,000 – ₹3,000 (Landing Page / ATS Resume / Research Paper)';
+              else if (numeric <= 6000) resolvedBudget = '₹3,000 – ₹6,000 (Business Website / Custom Portfolio)';
+              else if (numeric <= 14000) resolvedBudget = '₹6,000 – ₹15,000 (Multi-Page Website / Project Suite)';
+              else resolvedBudget = '₹15,000+ (Startup Website Package / E-Commerce / App)';
+            }
+          }
+        }
+
         setFormData((prev) => ({
           ...prev,
           service: matchedService.displayName,
-          serviceType: preselectedServiceType || ''
+          serviceType: resolvedType,
+          budget: resolvedBudget || prev.budget
         }));
+
         // Clear errors if any
         setErrors((prev) => {
           const next = { ...prev };
           delete next.service;
-          if (preselectedServiceType) delete next.serviceType;
+          if (resolvedType) delete next.serviceType;
           return next;
         });
       }
     }
-  }, [preselectedService, preselectedServiceType]);
+  }, [preselectedService, preselectedServiceType, preselectedBudget]);
 
   // Handle main service change with automatic subcategory reset
   const handleServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -289,9 +327,29 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           {/* RIGHT SIDE DYNAMIC ENQUIRY FORM */}
           <div className="lg:col-span-7 glass-card p-6 sm:p-10 rounded-3xl border border-white/15 shadow-2xl shadow-cyan-950/30">
             <h3 className="text-2xl font-bold text-white mb-2">Project Enquiry Form</h3>
-            <p className="text-xs sm:text-sm text-slate-400 mb-8">
+            <p className="text-xs sm:text-sm text-slate-400 mb-6">
               Fill in your requirements below to get started. All fields marked with * are required.
             </p>
+
+            {/* ACTIVE SELECTION BANNER */}
+            {formData.service && (
+              <div className="mb-6 p-3.5 rounded-2xl bg-[#00D2FF]/10 border border-[#00D2FF]/30 flex items-center justify-between gap-3 text-xs text-slate-200 animate-in fade-in duration-300">
+                <div className="flex items-center gap-2 overflow-hidden">
+                  <Sparkles className="w-4 h-4 text-[#00D2FF] shrink-0" />
+                  <span className="text-slate-400 font-medium">Selected Package:</span>
+                  <span className="text-white font-bold truncate">
+                    {formData.service} {formData.serviceType ? `› ${formData.serviceType}` : ''}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setFormData((prev) => ({ ...prev, service: '', serviceType: '', budget: '' }))}
+                  className="px-2.5 py-1 rounded-lg text-[10px] font-bold text-slate-300 hover:text-white bg-white/10 hover:bg-white/20 shrink-0 transition-colors"
+                >
+                  Clear Selection
+                </button>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-5">
               
@@ -362,6 +420,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       ) : (
                         <>
                           <option value="" disabled>Select a service type</option>
+                          {formData.serviceType && !activeServiceDef?.subcategoryGroups.flatMap((g) => g.subcategories).includes(formData.serviceType) && (
+                            <option value={formData.serviceType} className="bg-[#0A0A12] text-white py-1">
+                              {formData.serviceType}
+                            </option>
+                          )}
                           {activeServiceDef?.subcategoryGroups.map((group, gIdx) => {
                             if (group.groupName) {
                               return (
@@ -563,13 +626,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       className="w-full appearance-none px-4 py-3.5 pr-10 rounded-xl bg-[#05050A] border border-white/15 hover:border-white/30 text-sm text-white focus:outline-none focus:border-[#00D2FF] focus:ring-2 focus:ring-[#00D2FF]/20 transition-all duration-200 cursor-pointer"
                     >
                       <option value="" className="bg-[#0A0A12] text-slate-400">Select budget expectation</option>
-                      <option value="Flexible / Discuss with team" className="bg-[#0A0A12] text-white">Flexible / Discuss with team</option>
-                      <option value="Under ₹1,000" className="bg-[#0A0A12] text-white">Under ₹1,000</option>
-                      <option value="₹1,000 – ₹3,000" className="bg-[#0A0A12] text-white">₹1,000 – ₹3,000</option>
-                      <option value="₹3,000 – ₹5,000" className="bg-[#0A0A12] text-white">₹3,000 – ₹5,000</option>
-                      <option value="₹5,000 – ₹10,000" className="bg-[#0A0A12] text-white">₹5,000 – ₹10,000</option>
-                      <option value="₹10,000+" className="bg-[#0A0A12] text-white">₹10,000+</option>
-                      <option value="Custom Scope" className="bg-[#0A0A12] text-white">Custom Scope</option>
+                      {formData.budget && !BUDGET_OPTIONS.includes(formData.budget) && (
+                        <option value={formData.budget} className="bg-[#0A0A12] text-white">
+                          {formData.budget}
+                        </option>
+                      )}
+                      {BUDGET_OPTIONS.map((opt) => (
+                        <option key={opt} value={opt} className="bg-[#0A0A12] text-white">
+                          {opt}
+                        </option>
+                      ))}
                     </select>
                     <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
                       <ChevronDown className="w-4 h-4" />

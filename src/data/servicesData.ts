@@ -26,7 +26,7 @@ export interface ServiceDefinition {
   importantNote?: string;
   accentColor: string;
   previewGradient: string;
-  visualPreviewType: 'web' | 'portfolio' | 'graphic' | 'academic' | 'research';
+  visualPreviewType: 'web' | 'portfolio' | 'graphic' | 'academic' | 'research' | 'maintenance' | 'addon';
   templates?: ServiceTemplate[];
 }
 
@@ -36,17 +36,21 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     number: '01',
     title: 'WEBSITE DEVELOPMENT',
     displayName: 'Website Development',
-    shortDesc: 'Modern, high-converting and responsive websites tailored for businesses, creators and personal brands.',
-    fullDesc: 'We design and engineer bespoke web solutions from clean landing pages to multi-page business websites. Every build is optimized for blistering performance, fluid mobile responsiveness, intuitive user experience, and modern aesthetics.',
+    shortDesc: 'Modern, high-converting and responsive websites tailored for businesses, creators, startups, and e-commerce.',
+    fullDesc: 'We design and engineer bespoke web solutions from clean landing pages to multi-page business websites and full e-commerce stores. Every build is optimized for blistering performance, fluid mobile responsiveness, intuitive user experience, and modern aesthetics.',
     sampleImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
     sampleImageCaption: 'Responsive Web UI & Dashboard',
     subcategoryGroups: [
       {
+        groupName: 'Web Solutions',
         subcategories: [
-          'Business Websites',
-          'Personal Websites',
-          'Landing Pages',
-          'Custom Websites'
+          'Business Website (From ₹5,000)',
+          'Personal Website (From ₹4,000)',
+          'Landing Page (From ₹2,500)',
+          'Custom Website (From ₹12,000+)',
+          'Startup Website Package (From ₹15,000+)',
+          'E-Commerce Website (From ₹15,000+)',
+          'Custom Web Application (From ₹20,000+)'
         ]
       }
     ],
@@ -73,19 +77,26 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     sampleImageCaption: 'ATS-Compliant Resume & CV Templates (R1–R6)',
     subcategoryGroups: [
       {
-        groupName: 'Portfolio',
-        subcategories: ['Custom-Made Portfolio']
+        groupName: 'Portfolio Websites',
+        subcategories: [
+          'Custom Portfolio Website (From ₹3,000)',
+          'Professional Portfolio (From ₹6,000+)',
+          'Developer/Designer Portfolio (From ₹5,000+)'
+        ]
       },
       {
-        groupName: 'Resume / CV Templates',
+        groupName: 'Resume / CV (ATS-Compliant)',
         subcategories: [
+          'Basic Resume Design (From ₹500)',
+          'Professional Resume (From ₹1,000)',
+          'ATS-Friendly Resume (From ₹1,000)',
+          'Resume + Portfolio Package (From ₹3,000+)',
           'Template R1 - Minimalist ATS Resume',
           'Template R2 - Modern Executive Resume',
           'Template R3 - Tech & Engineering Resume',
           'Template R4 - Corporate Professional CV',
           'Template R5 - Academic & Research CV',
-          'Template R6 - Creative Professional Resume',
-          'Custom Resume Design'
+          'Template R6 - Creative Professional Resume'
         ]
       }
     ],
@@ -122,30 +133,30 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
       {
         groupName: 'Social Media Design',
         subcategories: [
-          'Instagram Posts',
-          'Instagram Stories',
-          'Instagram Carousels',
-          'YouTube Thumbnails',
-          'LinkedIn Posts',
-          'Social Media Banners'
+          'Instagram Post (From ₹300)',
+          'Instagram Story (From ₹250)',
+          'Instagram Carousel (From ₹800)',
+          'YouTube Thumbnail (From ₹300)',
+          'LinkedIn Post (From ₹300)',
+          'Social Media Banner (From ₹500)'
         ]
       },
       {
         groupName: 'Promotional Design',
         subcategories: [
-          'Promotional Posters',
-          'Advertisement Creatives',
-          'Event Posters',
-          'Flyers'
+          'Promotional Poster (From ₹400)',
+          'Advertisement Creative (From ₹500)',
+          'Event Poster (From ₹500)',
+          'Flyer (From ₹500)'
         ]
       },
       {
         groupName: 'Professional Design',
         subcategories: [
-          'Certificates',
-          'Invitations',
-          'Business Cards',
-          'Letterheads'
+          'Certificate (From ₹300)',
+          'Invitation (From ₹500)',
+          'Business Card (From ₹300)',
+          'Letterhead (From ₹300)'
         ]
       }
     ],
@@ -182,19 +193,21 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
       {
         groupName: 'PPT & Presentation Design',
         subcategories: [
-          'College PPT',
-          'School PPT',
-          'Project Presentation',
-          'Research Presentation',
-          'Conference Presentation'
+          'School PPT (From ₹500)',
+          'College PPT (From ₹700)',
+          'Project Presentation (From ₹1,000)',
+          'Research Presentation (From ₹1,500)',
+          'Conference Presentation (From ₹2,000+)'
         ]
       },
       {
-        groupName: 'Assignment Services',
+        groupName: 'Assignment & Project Services',
         subcategories: [
-          "Full Project File Preparation Based on Client's Own Content/Material",
-          'Online Assignment File Delivery',
-          'Offline Printed Assignment/File Delivery'
+          'Assignment Formatting (From ₹300)',
+          'Project File Formatting (From ₹800)',
+          'Complete Project File Preparation* (From ₹1,500+)',
+          'Online Assignment File Delivery (Included)',
+          'Offline Printed Assignment/File (From ₹500+)'
         ]
       }
     ],
@@ -222,11 +235,28 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     sampleImageCaption: 'IEEE & Springer Publication Format Templates',
     subcategoryGroups: [
       {
+        groupName: 'Template & Conversion Services',
         subcategories: [
-          'IEEE Template Formatting',
-          'Springer Template Formatting',
-          'LaTeX Formatting',
-          'Word ↔ LaTeX Formatting/Conversion'
+          'Research Paper Formatting (From ₹800)',
+          'IEEE Template Formatting (From ₹1,000)',
+          'Springer Template Formatting (From ₹1,000)',
+          'LaTeX Formatting (From ₹1,500)',
+          'Word → LaTeX Conversion (From ₹1,500)',
+          'LaTeX → Word Conversion (From ₹1,500)',
+          'References/Citation Formatting (From ₹500)',
+          'Tables & Figures Formatting (From ₹500)',
+          'Final Formatting Check (From ₹1,000)',
+          'Thesis/Dissertation Formatting (From ₹2,000+)'
+        ]
+      },
+      {
+        groupName: 'Page-Based IEEE/Springer Tier',
+        subcategories: [
+          'IEEE / Springer (1–5 pages: ₹1,000)',
+          'IEEE / Springer (6–10 pages: ₹1,500)',
+          'IEEE / Springer (11–20 pages: ₹2,500)',
+          'IEEE / Springer (21–30 pages: ₹3,500)',
+          'IEEE / Springer (30+ pages: Custom Quote)'
         ]
       }
     ],
@@ -246,8 +276,91 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
       { id: 'ieee', name: 'IEEE Format Template', image: '/templates/ieee_template.png', pdfUrl: '/templates/ieee_template.pdf', tag: 'IEEE Two-Column' },
       { id: 'springer', name: 'Springer Format Template', image: '/templates/springer_template.png', pdfUrl: '/templates/springer_template.pdf', tag: 'Springer LNCS/Nature' }
     ]
+  },
+  {
+    id: 'website-maintenance-support',
+    number: '06',
+    title: 'WEBSITE MAINTENANCE & SUPPORT',
+    displayName: 'Website Maintenance & Support',
+    shortDesc: 'Keep your web presence fast, bug-free, secure, and always updated with recurring monthly plans.',
+    fullDesc: 'Consistent website care that prevents downtime, protects from vulnerabilities, and keeps your content fresh. Choose from our standard monthly maintenance tiers or request on-demand emergency fixes.',
+    sampleImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+    sampleImageCaption: 'Ongoing Web Maintenance & Monitoring',
+    subcategoryGroups: [
+      {
+        groupName: 'Monthly Maintenance Packages',
+        subcategories: [
+          'Basic Website Maintenance (₹1,500/month)',
+          'Business Website Maintenance (₹2,500/month)',
+          'E-Commerce Maintenance (₹4,000/month)'
+        ]
+      },
+      {
+        groupName: 'On-Demand Technical Support',
+        subcategories: [
+          'Website Updates (From ₹500/request)',
+          'Bug Fixing (From ₹500+)',
+          'Speed Optimization (From ₹1,500+)',
+          'Security/Backup Setup (From ₹1,000+)',
+          'Website Migration (From ₹2,000+)',
+          'Domain & Hosting Management (From ₹1,000/year+)'
+        ]
+      }
+    ],
+    featuresIncluded: [
+      'Proactive monitoring, uptime checks and bug fixing',
+      'Routine content revisions, image updates and announcements',
+      'Automated secure cloud backups and disaster recovery',
+      'Performance speed tuning & asset optimization',
+      'Direct priority developer support via WhatsApp & email'
+    ],
+    sampleDeliverable: 'Monthly maintenance report and guaranteed response time for technical fixes.',
+    importantNote: 'Monthly maintenance packages are billed monthly or annually with flexible cancel-anytime terms.',
+    accentColor: '#F59E0B',
+    previewGradient: 'from-amber-500/20 via-orange-500/20 to-red-500/20',
+    visualPreviewType: 'maintenance'
+  },
+  {
+    id: 'add-on-services',
+    number: '07',
+    title: 'ADD-ON SERVICES',
+    displayName: 'Add-on Services',
+    shortDesc: 'A la carte features, integrations, integrations and setup services for any project.',
+    fullDesc: 'Supercharge your website or project with individual modular upgrades. You can select single add-ons or bundle multiple items alongside any main service build.',
+    sampleImage: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80',
+    sampleImageCaption: 'Modular Technical Add-ons & Integrations',
+    subcategoryGroups: [
+      {
+        groupName: 'Integrations & Features',
+        subcategories: [
+          'Extra Website Page (₹500)',
+          'WhatsApp Integration (₹500)',
+          'Google Maps Integration (₹300)',
+          'Contact Form Setup (₹500)',
+          'Payment Gateway Integration (₹1,500)',
+          'Basic SEO Setup (₹2,000)',
+          'Google Analytics Setup (₹500)',
+          'Product Upload (₹20/product)',
+          'Custom Feature (From ₹1,000+)',
+          'Hosting Setup (From ₹500+)',
+          'Domain Setup (From ₹300+)'
+        ]
+      }
+    ],
+    featuresIncluded: [
+      'Seamless code integration without disrupting existing pages',
+      'Complete end-to-end testing and verification',
+      'API key and security credential assistance',
+      'No hidden platform charges or ongoing markups'
+    ],
+    sampleDeliverable: 'Configured and live modular feature integrated into your project.',
+    accentColor: '#8B5CF6',
+    previewGradient: 'from-purple-500/20 via-violet-500/20 to-indigo-500/20',
+    visualPreviewType: 'addon'
   }
 ];
+
+export const SERVICE_OPTIONS = OFFICIAL_SERVICES.map((s) => s.displayName);
 
 // Helper to get flat subcategories for dropdowns
 export const getSubcategoriesForService = (serviceDisplayName: string): { group?: string; options: string[] }[] => {

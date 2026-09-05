@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/sections/Hero';
 import { SocialProof } from './components/sections/SocialProof';
+import { WhatWeAreFor } from './components/sections/WhatWeAreFor';
 import { Services } from './components/sections/Services';
+import { Pricing } from './components/sections/Pricing';
 import { Portfolio } from './components/sections/Portfolio';
 import { DeviceShowcase } from './components/sections/DeviceShowcase';
 import { Process } from './components/sections/Process';
@@ -16,11 +18,13 @@ import { Footer } from './components/layout/Footer';
 export function App() {
   const [selectedService, setSelectedService] = useState<string | undefined>();
   const [selectedServiceType, setSelectedServiceType] = useState<string | undefined>();
+  const [selectedBudget, setSelectedBudget] = useState<string | undefined>();
 
-  const handleOpenInquiry = (serviceDisplayName?: string, serviceType?: string) => {
+  const handleOpenInquiry = (serviceDisplayName?: string, serviceType?: string, suggestedBudget?: string) => {
     if (serviceDisplayName) {
       setSelectedService(serviceDisplayName);
       setSelectedServiceType(serviceType || '');
+      setSelectedBudget(suggestedBudget || '');
     }
     const contactElem = document.getElementById('contact');
     if (contactElem) {
@@ -41,8 +45,14 @@ export function App() {
         {/* SOCIAL PROOF STRIP */}
         <SocialProof />
 
-        {/* SERVICES SECTION (5 OFFICIAL CATEGORIES) */}
+        {/* WHAT OUR WEBSITE IS FOR & MISSION */}
+        <WhatWeAreFor onOpenInquiry={handleOpenInquiry} />
+
+        {/* SERVICES SECTION */}
         <Services onSelectServiceForInquiry={handleOpenInquiry} />
+
+        {/* COMPLETE PRICING & PACKAGES SECTION */}
+        <Pricing onSelectServiceForInquiry={handleOpenInquiry} />
 
         {/* FEATURED WORK PORTFOLIO GRID */}
         <Portfolio onOpenInquiry={handleOpenInquiry} />
@@ -69,6 +79,7 @@ export function App() {
         <ContactSection 
           preselectedService={selectedService} 
           preselectedServiceType={selectedServiceType} 
+          preselectedBudget={selectedBudget}
         />
       </main>
 

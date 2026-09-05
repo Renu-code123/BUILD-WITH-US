@@ -111,23 +111,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
                     {project.subtitle}
                   </div>
 
-                  {/* LIVE LINK PILL IF AVAILABLE */}
-                  {project.demoUrl && (
-                    <div className="mb-3">
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#00D2FF]/10 hover:bg-[#00D2FF]/20 border border-[#00D2FF]/30 text-[11px] font-semibold text-[#00D2FF] transition-all hover:underline"
-                        title="Click to visit live website in a new tab"
-                      >
-                        <span className="truncate max-w-[200px]">{project.demoUrl.replace(/^https?:\/\//, '')}</span>
-                        <ArrowUpRight className="w-3 h-3 shrink-0 stroke-[2.5]" />
-                      </a>
-                    </div>
-                  )}
-
                   <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed mb-4">
                     {project.description}
                   </p>
@@ -195,14 +178,9 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenInquiry }) => {
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                     Live Website Active
                   </div>
-                  <a
-                    href={selectedProject.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-bold text-white hover:text-[#00D2FF] transition-colors underline flex items-center gap-1"
-                  >
-                    <span>{selectedProject.demoUrl.replace(/^https?:\/\//, '')}</span>
-                  </a>
+                  <span className="text-sm font-bold text-white">
+                    Verified Production Deployment
+                  </span>
                 </div>
                 <a
                   href={selectedProject.demoUrl}
