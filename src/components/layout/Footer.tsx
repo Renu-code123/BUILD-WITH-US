@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail, Sparkles } from 'lucide-react';
+import { ArrowUp, Mail, Send, Clock, Globe, Sparkles } from 'lucide-react';
 
 const InstagramIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -130,18 +130,49 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* COLUMN 3: CONNECT WITH US */}
+          {/* COLUMN 3: DIRECT CONTACT & SUPPORT */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
-              Connect With Us
+              Direct Contact
             </h4>
-            <ul className="space-y-2.5 text-xs font-medium">
-              <li><a href="#contact" className="text-[#00D2FF] hover:underline font-bold">Enquiry Form →</a></li>
-              <li><a href="mailto:buildwithus0723@gmail.com" className="hover:text-cyan-300 transition-colors">buildwithus0723@gmail.com</a></li>
-              <li><a href="https://www.instagram.com/build_with_us.07?igsi=MXN5ZmdmdzYxaHJwYQ==" target="_blank" rel="noreferrer" className="hover:text-[#FF3CAC] transition-colors">Instagram (@build_with_us.07)</a></li>
-              <li><a href="https://x.com/BuildWithUs0723" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Twitter / X (@BuildWithUs0723)</a></li>
-              <li><a href="https://www.linkedin.com/in/build-with-us-undefined-71b300430/" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors">LinkedIn (Build With Us)</a></li>
-            </ul>
+            <div className="space-y-3 text-xs">
+              <a 
+                href="#contact" 
+                className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400/40 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 transition-all group"
+              >
+                <div className="w-7 h-7 rounded-lg bg-[#00D2FF]/10 border border-[#00D2FF]/20 flex items-center justify-center text-[#00D2FF] group-hover:scale-110 transition-transform">
+                  <Send className="w-3.5 h-3.5" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-semibold text-white">Project Enquiry</span>
+                  <span className="text-[10px] text-slate-400">Get proposal & pricing</span>
+                </div>
+              </a>
+
+              <a 
+                href="mailto:buildwithus0723@gmail.com" 
+                className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-pink-500/40 hover:bg-pink-500/10 text-slate-300 hover:text-pink-300 transition-all group"
+              >
+                <div className="w-7 h-7 rounded-lg bg-[#FF3CAC]/10 border border-[#FF3CAC]/20 flex items-center justify-center text-[#FF3CAC] group-hover:scale-110 transition-transform">
+                  <Mail className="w-3.5 h-3.5" />
+                </div>
+                <div className="flex flex-col truncate">
+                  <span className="font-semibold text-white">Direct Email</span>
+                  <span className="text-[10px] text-slate-400 truncate">buildwithus0723@gmail.com</span>
+                </div>
+              </a>
+
+              <div className="pt-1 flex flex-col gap-2 text-[11px] text-slate-400">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                  <span>Turnaround: <strong className="text-slate-200">2–4 Hours</strong></span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Globe className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+                  <span>India • Worldwide Clients</span>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>

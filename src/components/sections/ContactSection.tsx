@@ -198,7 +198,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       // Optional submission if backend access key exists
       const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
       if (accessKey) {
-        await fetch('https://api.web3forms.com/submit', {
+        const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -208,7 +208,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             access_key: accessKey,
             subject: `✨ New Inquiry: ${formData.service} (${formData.serviceType}) from ${formData.name}`,
             from_name: 'Build With Us Studio',
-            to_email: 'buildwithus0723@gmail.com',
+            replyto: formData.email,
             name: formData.name,
             email: formData.email,
             phone: formData.phone,
@@ -220,7 +220,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             description: formData.description,
             reference: formData.reference || 'None provided'
           })
-        }).catch((err) => console.warn('Network inquiry post notice:', err));
+        });
+
+        const result = await response.json().catch(() => null);
+        if (result && !result.success) {
+          console.warn('Web3Forms API response notice:', result.message || result);
+        }
       }
 
       // Always show polished confirmation state
