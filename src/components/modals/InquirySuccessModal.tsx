@@ -104,17 +104,39 @@ export const InquirySuccessModal: React.FC<InquirySuccessModalProps> = ({ inquir
 
         {/* DIRECT ACTION BUTTONS */}
         <div className="space-y-3">
+          {/* OPEN IN GMAIL WEB (Doesn't open Outlook desktop app) */}
           <a
-            href={`mailto:buildwithus0723@gmail.com?subject=${emailSubject}&body=${emailBody}`}
-            className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#00D2FF] via-[#784BA0] to-[#FF3CAC] text-white font-bold text-sm shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 active:scale-95 transition-all"
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=buildwithus0723@gmail.com&su=${emailSubject}&body=${emailBody}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#00D2FF] via-[#784BA0] to-[#FF3CAC] text-white font-bold text-sm shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2.5 active:scale-95 transition-all hover:opacity-95"
           >
             <Mail className="w-4 h-4" />
-            <span>Send Copy to buildwithus0723@gmail.com</span>
+            <span>Open in Gmail (Web Browser)</span>
           </a>
+
+          {/* FALLBACK / COPY DETAILS */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleCopyRef}
+              className="flex-1 py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white font-medium text-xs border border-white/10 transition-colors flex items-center justify-center gap-1.5"
+            >
+              {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copied ? 'Reference Copied!' : 'Copy Reference ID'}</span>
+            </button>
+
+            <a
+              href={`mailto:buildwithus0723@gmail.com?subject=${emailSubject}&body=${emailBody}`}
+              className="py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-slate-200 text-xs border border-white/10 transition-colors"
+              title="Open in default system email client (Outlook, Apple Mail, etc.)"
+            >
+              Other Mail App
+            </a>
+          </div>
 
           <button
             onClick={onClose}
-            className="w-full py-3 rounded-full bg-white/10 hover:bg-white/15 text-slate-200 font-semibold text-xs border border-white/10 active:scale-95 transition-all"
+            className="w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 font-semibold text-xs border border-white/10 active:scale-95 transition-all"
           >
             Done & Close
           </button>

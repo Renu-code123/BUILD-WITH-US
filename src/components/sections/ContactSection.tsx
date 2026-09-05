@@ -198,33 +198,33 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       // Optional submission if backend access key exists
       const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
       if (accessKey) {
+        const payload = new FormData();
+        payload.append('access_key', accessKey);
+        payload.append('subject', `✨ New Inquiry: ${formData.service} (${formData.serviceType}) - ${formData.name}`);
+        payload.append('from_name', 'Build With Us Studio');
+        payload.append('name', formData.name);
+        payload.append('email', formData.email);
+        payload.append('replyto', formData.email);
+        payload.append('phone', formData.phone);
+        payload.append('service', formData.service);
+        payload.append('service_type', formData.serviceType);
+        payload.append('budget', formData.budget || 'Flexible / To be discussed');
+        payload.append('deadline', formData.deadline || 'Flexible');
+        payload.append('contact_preference', formData.contactPreference);
+        payload.append('reference_link', formData.reference || 'None provided');
+        payload.append(
+          'message',
+          `Client: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService: ${formData.service}\nType: ${formData.serviceType}\nBudget: ${formData.budget || 'Flexible'}\nDeadline: ${formData.deadline || 'Flexible'}\nPreferred Contact: ${formData.contactPreference}\nReference: ${formData.reference || 'None'}\n\nProject Requirements:\n${formData.description}`
+        );
+
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-          },
-          body: JSON.stringify({
-            access_key: accessKey,
-            subject: `✨ New Inquiry: ${formData.service} (${formData.serviceType}) from ${formData.name}`,
-            from_name: 'Build With Us Studio',
-            replyto: formData.email,
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            service: formData.service,
-            serviceType: formData.serviceType,
-            budget: formData.budget || 'Flexible / To be discussed',
-            deadline: formData.deadline || 'Flexible',
-            contactPreference: formData.contactPreference,
-            description: formData.description,
-            reference: formData.reference || 'None provided'
-          })
+          body: payload
         });
 
         const result = await response.json().catch(() => null);
         if (result && !result.success) {
-          console.warn('Web3Forms API response notice:', result.message || result);
+          console.warn('Web3Forms Notice:', result.message || result);
         }
       }
 
